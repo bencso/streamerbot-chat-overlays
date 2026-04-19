@@ -1,0 +1,66 @@
+name: Automatikus Patch Notes
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Projekt letöltése
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Legutóbbi commit üzenet lekérése
+        id: commit
+        run: |
+          {
+            echo 'message<<EOF'
+            git log -1 --pretty=%B
+            echo EOF
+          } >> $GITHUB_OUTPUT
+
+      - name: README Patch Notes frissítése
+        env:
+          COMMIT_MSG: ${{ steps.commit.outputs.message }}
+        run: |
+          python <<'PY'
+          import os, re
+          from pathlib import Path
+
+          readme = Path('README.md')
+          text = readme.read_text(encoding='utf-8') if readme.exists() else '# Project\n'
+          msg = os.environ.get('COMMIT_MSG','').strip()
+          lines = [ln.rstrip() for ln in msg.splitlines() if ln.strip()]
+          title = lines[0] if lines else 'Legutóbbi frissítés'
+          bullets = []
+          for ln in lines[1:]:
+            bullets.append(ln if ln.startswith('-') else f'- {ln}')
+          if not bullets:
+            bullets = ['- Karbantartási frissítés']
+
+          block = '## 📝 Patch Notes\n\n'
+          block += f'### {title}\n\n' + '\n'.join(bullets) + '\n\n'
+          block += '> Automatikusan generálva a legutóbbi commit üzenetből.\n'
+
+          pattern = r'## 📝 Patch Notes[\s\S]*?(?=\n## |\Z)'
+          if re.search(pattern, text):
+            text = re.sub(pattern, block, text)
+          else:
+            text = text.rstrip() + '\n\n---\n\n' + block + '\n'
+
+          readme.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Változások commitolása
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          git diff --cached --quiet || git commit -m "docs: patch notes frissítése"
+          git push
