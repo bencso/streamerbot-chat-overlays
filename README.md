@@ -1,4 +1,4 @@
-# Stream Overlays
+# Stream Overlays - Chat Widget
 
 > Valós idejű _Twitch_ + _Kick_ chat és alert overlay Streamer.bot integrációval. Optimalizálva _OBS Studio_, _Streamlabs_ és bármely _Browser Source_ alapú rendszerhez.
 
