@@ -1,0 +1,312 @@
+.clean .message,
+.clean .alert_event {
+  background: rgba(12, 12, 16, 0.8);
+  border: 0px;
+}
+
+.clean.vertical .message {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: start;
+}
+
+.clean.vertical .message,
+.clean.vertical .alert_event {
+  animation: riseStart 1s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+.clean.horizontal .message,
+.clean.horizontal .alert_event {
+  animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+.clean.vertical .alert_user {
+  font-weight: 700 !important;
+}
+
+.clean.vertical .alert_text {
+  text-align: right;
+  font-size: 0.75rem !important;
+  line-height: 1 !important;
+}
+
+.clean.vertical .alert_textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px !important;
+  justify-content: center;
+  align-items: end !important;
+}
+
+.clean.vertical .message,
+.clean .alert_event {
+  padding: 17px 20px !important;
+}
+
+.clean.vertical .message::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.95),
+    transparent
+  );
+}
+
+/*
+*/
+
+#chat-container:has(#messages.clean.horizontal) {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* ROW */
+#messages.clean.horizontal {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-end !important;
+  gap: 0px !important;
+
+  width: 100% !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  background-color: rgba(36, 36, 36, 0.5) !important;
+}
+
+/* ==================================================
+   SAME BASE STYLE FOR MESSAGE + ALERT
+   ================================================== */
+#messages.clean.horizontal .message,
+#messages.clean.horizontal .alert_event {
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  width: auto !important;
+  min-width: auto !important;
+
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#messages.clean.vertical .message,
+#messages.clean.vertical .alert_event {
+  border-radius: 14px !important;
+}
+
+#messages.clean.vertical .alert_titleContainer {
+  flex: 1 !important;
+}
+
+/* ==================================================
+   LEFT ICON BLOCK (MESSAGE + ALERT)
+   ================================================== */
+#messages.clean.horizontal .message_header,
+#messages.clean.horizontal .alert_event > svg,
+#messages.clean.horizontal .alert_event > img {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-height: 42px !important;
+  padding: 0 14px !important;
+  margin: 0 !important;
+
+  flex-shrink: 0 !important;
+}
+
+#messages.clean.horizontal .message_header {
+  gap: 8px !important;
+  padding-right: 8px !important;
+}
+
+#messages.clean.horizontal .alert_event > svg,
+#messages.clean.horizontal .alert_event > img {
+  width: 18px !important;
+  height: 18px !important;
+  box-sizing: content-box !important;
+}
+
+/* ==================================================
+   RIGHT TEXT BLOCK (MESSAGE + ALERT)
+   ================================================== */
+#messages.clean.horizontal .message_text,
+#messages.clean.horizontal .alert_titleContainer {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+
+  min-height: 42px !important;
+  padding: 0px !important;
+  margin: 0 !important;
+}
+
+#messages.clean.horizontal .message_text {
+  padding-right: 16px !important;
+}
+
+#messages.clean.horizontal .alert_event {
+  padding: 0 16px !important;
+  gap: 12px !important;
+}
+
+/* ==================================================
+   USERNAME
+   ================================================== */
+#messages.clean.horizontal .username {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
+
+#messages.clean.horizontal .username::after {
+  content: "" !important;
+}
+
+/* ==================================================
+   TEXT
+   ================================================== */
+#messages.clean.horizontal .message_text,
+#messages.clean.horizontal .message_text p,
+#messages.clean.horizontal .alert_title,
+#messages.clean.horizontal .alert_text,
+#messages.clean.horizontal .alert_user {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: white !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  text-shadow: none !important;
+}
+
+/* title stronger */
+#messages.clean.horizontal .alert_title,
+#messages.clean.horizontal .alert_user {
+  font-weight: 700 !important;
+}
+
+/* paragraphs inline */
+#messages.clean.horizontal .message_text p {
+  display: inline !important;
+}
+
+/* emotes */
+#messages.clean.horizontal .message_text img {
+  width: 22px !important;
+  height: fit-content !important;
+  vertical-align: middle !important;
+  margin: 0px !important;
+}
+
+/* badges */
+#messages.clean.horizontal .badges {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+#messages.clean.horizontal .badges .twitch,
+#messages.clean.horizontal .badges .kick {
+  margin-right: 4px !important;
+}
+
+#messages.clean.horizontal .badges svg,
+#messages.clean.horizontal .badges img {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* ==================================================
+   PLATFORM COLORS ALERTS ONLY
+   ================================================== */
+
+#messages.clean.horizontal .alert_event:has(.twitch) .twitch,
+#messages.clean.horizontal .alert_event:has(.kick) .kick {
+  display: none !important;
+}
+
+#messages.clean.horizontal .alert_event {
+  background: white !important;
+}
+
+#messages.clean.horizontal .alert_event .alert_title,
+#messages.clean.horizontal .alert_event .alert_text,
+#messages.clean.horizontal .alert_event .alert_user {
+  color: #242424 !important;
+  text-shadow: none !important;
+}
+
+/* ==================================================
+   EXIT
+   ================================================== */
+#messages.clean.horizontal .fade-out {
+  animation: fadeOut 1s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+/* ==================================================
+   ANIMATION (BOTTOM -> TOP)
+   ================================================== */
+@keyframes riseStart {
+  0% {
+    opacity: 0;
+    transform: translateX(-28px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes riseEnd {
+  100% {
+    opacity: 0;
+    transform: translateX(-28px);
+    filter: blur(6px);
+  }
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateY(0);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+    transform: translateX(0) translateY(0);
+
+    filter: blur(6px);
+  }
+  0% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    filter: blur(0);
+  }
+}

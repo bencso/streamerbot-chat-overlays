@@ -1,0 +1,104 @@
+/* HORIZONTAL */
+#chat-container:has(.horizontal) {
+  padding: 0;
+}
+
+#messages.horizontal {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  overflow: hidden;
+  gap: 8px;
+  width: 100%;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+.horizontal .username {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.horizontal .message_text {
+  font-size: 1rem;
+  gap: 4px;
+}
+
+.horizontal .message_header {
+  margin: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#messages.horizontal .message {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px;
+
+  margin: 0;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+
+  white-space: nowrap;
+  min-width: auto !important;
+  width: auto !important;
+
+  animation: messageInHorizontal 0.1s ease forwards;
+}
+
+#messages.horizontal .username::after {
+  content: ":";
+}
+
+#messages.horizontal .message:last-child::after {
+  display: none;
+}
+
+.horizontal .alert_textContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.horizontal .alert_titleContainer {
+  margin-left: 4px;
+}
+
+@keyframes messageInHorizontal {
+  0% {
+    transform: translateX(10px) scale(0.98);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0px) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes messageOutHorizontal {
+  0% {
+    transform: translateX(0px) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-10px) scale(0.96);
+    opacity: 0;
+  }
+}
+
+.horizontal .fade-out {
+  animation: messageOutHorizontal 0.35s ease forwards;
+}

@@ -1,0 +1,265 @@
+#chat-container:has(#messages.boxedminimal.horizontal) {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* ROW */
+#messages.boxedminimal.horizontal {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-end !important;
+  gap: 0px !important;
+
+  width: 100% !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  background-color: #242424 !important;
+}
+
+/* ==================================================
+   SAME BASE STYLE FOR MESSAGE + ALERT
+   ================================================== */
+#messages.boxedminimal.horizontal .message,
+#messages.boxedminimal.horizontal .alert_event {
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  align-items: stretch !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  width: auto !important;
+  min-width: auto !important;
+
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 0 16px !important;
+
+  animation: riseUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+#messages.boxedminimal.horizontal .message {
+  gap: 4px !important;
+  padding: 0 8px !important;
+}
+
+#messages.boxedminimal.vertical .message,
+#messages.boxedminimal.vertical .alert_event {
+  background: #242424 !important;
+  padding: 12px !important;
+  width: 100% !important;
+
+  animation: riseUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+#messages.boxedminimal.vertical .alert_event,
+#messages.boxedminimal.horizontal .alert_event {
+  background: #9b4eff !important;
+  color: #242424 !important;
+}
+
+#messages.colored.boxedminimal .alert_event.follow {
+  background: #fed900 !important;
+}
+#messages.colored.boxedminimal .alert_event.follow p,
+#messages.colored.boxedminimal .alert_event.raid p {
+  color: #242424 !important;
+}
+
+#messages.boxedminimal .alert_event p {
+  text-shadow: none !important;
+}
+
+#messages.colored.boxedminimal .alert_event.sub {
+  background: #2b59c3 !important;
+}
+
+#messages.colored.boxedminimal .alert_event.raid {
+  background: #fcfcfc !important;
+}
+
+/* ==================================================
+   LEFT ICON BLOCK (MESSAGE + ALERT)
+   ================================================== */
+#messages.boxedminimal.horizontal .message_header,
+#messages.boxedminimal.horizontal .alert_event > svg,
+#messages.boxedminimal.horizontal .alert_event > img {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-height: 42px !important;
+  padding: 0 8px !important;
+  margin: 0 !important;
+
+  flex-shrink: 0 !important;
+}
+
+#messages.boxedminimal.horizontal .message_header {
+  gap: 8px !important;
+  background: #242424 !important;
+  padding-right: 8px !important;
+}
+
+#messages.boxedminimal.horizontal .alert_event > svg,
+#messages.boxedminimal.horizontal .alert_event > img {
+  width: 18px !important;
+  height: 18px !important;
+  box-sizing: content-box !important;
+  background: #9146ff !important;
+}
+
+/* ==================================================
+   RIGHT TEXT BLOCK (MESSAGE + ALERT)
+   ================================================== */
+#messages.boxedminimal.horizontal .message_text,
+#messages.boxedminimal.horizontal .alert_titleContainer {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+
+  min-height: 42px !important;
+  padding: 0px !important;
+  margin: 0 !important;
+}
+
+/* message right side */
+#messages.boxedminimal.horizontal .message_text {
+  background: #242424 !important;
+}
+
+/* alert right side */
+
+#messages.boxedminimal.horizontal .alert_textContainer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ==================================================
+   USERNAME
+   ================================================== */
+#messages.boxedminimal.horizontal .username {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+}
+
+#messages.boxedminimal.horizontal .username::after {
+  content: "" !important;
+}
+
+/* ==================================================
+   TEXT
+   ================================================== */
+#messages.boxedminimal.horizontal .message_text,
+#messages.boxedminimal.horizontal .message_text p,
+#messages.boxedminimal.horizontal .alert_title,
+#messages.boxedminimal.horizontal .alert_text,
+#messages.boxedminimal.horizontal .alert_user {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: #fff !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  text-shadow: none !important;
+}
+
+#messages.boxedminimal.vertical .username,
+#messages.boxedminimal.vertical .alert_user {
+  font-size: 0.9rem !important;
+  line-height: 1 !important;
+}
+
+#messages.boxedminimal.vertical .alert_text {
+  font-size: 0.75rem !important;
+  line-height: 1 !important;
+}
+
+#messages.boxedminimal.vertical .alert_textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#messages.boxedminimal.horizontal .alert_user {
+  text-transform: none !important;
+}
+
+#messages.boxedminimal.horizontal .alert_title,
+#messages.boxedminimal.horizontal .alert_text {
+  font-weight: 600 !important;
+}
+
+/* paragraphs inline */
+#messages.boxedminimal.horizontal .message_text p {
+  display: inline !important;
+}
+
+/* emotes */
+#messages.boxedminimal.horizontal .message_text img {
+  width: 22px !important;
+  height: fit-content !important;
+  vertical-align: middle !important;
+  margin: 0px !important;
+}
+
+/* badges */
+#messages.boxedminimal.horizontal .badges {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+#messages.boxedminimal.horizontal .badges .twitch,
+#messages.boxedminimal.horizontal .badges .kick {
+  margin-right: 4px !important;
+}
+
+#messages.boxedminimal.horizontal .badges svg,
+#messages.boxedminimal.horizontal .badges img {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* ==================================================
+   EXIT
+   ================================================== */
+#messages.boxedminimal.horizontal .fade-out {
+  animation: riseDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+/* ==================================================
+   ANIMATION (BOTTOM -> TOP)
+   ================================================== */
+@keyframes riseUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes riseDown {
+  100% {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}

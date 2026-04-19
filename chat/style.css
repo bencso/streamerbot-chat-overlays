@@ -1,0 +1,150 @@
+@import url("theme/vertical.css");
+@import url("theme/horizontal.css");
+@import url("theme/clean.css");
+@import url("theme/boxedminimal.css");
+@import url("alert.css");
+/* ===== RESETS, DELETE SCROLLBAR ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* ===== DEFAULT ===== */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  font-family: "Manrope", sans-serif;
+}
+
+/* ===== CONTAINER ===== */
+#chat-container {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* ===== MESSAGES WRAPPER ===== */
+#messages {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+}
+
+/* ===== MESSAGE CARD ===== */
+.message {
+  width: fit-content;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transform: translateY(14px) scale(0.98);
+  opacity: 0;
+  animation: messageIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+  contain: layout paint;
+  transform-origin: left bottom;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  animation-delay: calc(var(--i) * 1s);
+  transition:
+    transform 0.25s ease,
+    opacity 0.5s ease;
+}
+
+.message_header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.username {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #fff !important;
+}
+
+.message_text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.92);
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.message_text p {
+  display: inline;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.message_text img {
+  margin: 0 3px;
+  height: 1rem !important;
+  width: auto;
+}
+
+.message_text img,
+.badges img,
+.badges svg {
+  width: 15px;
+  height: 15px;
+  display: inline-flex;
+  vertical-align: middle;
+  transform: none;
+  opacity: 1 !important;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+@keyframes messageIn {
+  0% {
+    transform: translateY(6px) scale(0.98);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes messageOut {
+  0% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  100% {
+    transform: translateY(-8px) scale(0.97);
+    opacity: 0;
+    filter: blur(4px);
+  }
+}
+
+.fade-out {
+  animation: messageOut 0.35s ease forwards;
+}

@@ -1,0 +1,93 @@
+ client.on("Twitch.Sub", (event) => {
+    const data = event.data || event;
+    const structuredData = {
+      type: event.event.type,
+      userId: data.user.id,
+      displayName: data.user.name,
+      tier: data.sub_tier,
+      duration: data.duration_months,
+    };
+    addQueueItem(
+      "alert",
+      structuredData,
+      data.user,
+      event.source.toLowerCase(),
+    );
+  });
+  client.on("Twitch.ReSub", (event) => {
+    const data = event.data || event;
+    const structuredData = {
+      type: event.event.type,
+      userId: data.user.id,
+      displayName: data.user.name,
+      tier: data.subTier,
+      duration: data.durationMonths,
+    };
+    addQueueItem(
+      "alert",
+      structuredData,
+      data.user,
+      event.source.toLowerCase(),
+    );
+  });
+  client.on("Twitch.Raid", (event) => {
+    const data = event.data || event;
+    const structuredData = {
+      type: event.event.type,
+      userId: data.to_broadcaster_user_id,
+      displayName: data.from_broadcaster_user_name,
+      viewers: data.viewers,
+    };
+    addQueueItem(
+      "alert",
+      structuredData,
+      data.user,
+      event.source.toLowerCase(),
+    );
+  });
+
+  // KICK ALERTS
+  client.on("Kick.Follow", (event) => {
+    const data = event.data || event;
+    const structuredData = {
+      type: event.event.type,
+      userId: data.user.id,
+      displayName: data.user.name,
+    };
+    addQueueItem(
+      "alert",
+      structuredData,
+      data.user,
+      event.source.toLowerCase(),
+    );
+  });
+  client.on("Kick.Sub", (event) => {
+    const data = event.data || event;
+    const structuredData = {
+      type: event.event.type,
+      userId: data.user.id,
+      displayName: data.user.name,
+      duration: data.duration,
+    };
+    addQueueItem(
+      "alert",
+      structuredData,
+      data.user,
+      event.source.toLowerCase(),
+    );
+  });
+  client.on("Kick.GiftSubscription", (event) => {
+    const data = event.data || event;
+    const structuredData = {
+      type: event.event.type,
+      userId: data.user.id,
+      displayName: data.user.name,
+      recipientsLength: data.recipients.length,
+    };
+    addQueueItem(
+      "alert",
+      structuredData,
+      data.user,
+      event.source.toLowerCase(),
+    );
+  });

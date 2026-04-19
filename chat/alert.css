@@ -1,0 +1,280 @@
+/* ===============================
+   ALERT EVENT BOX
+   =============================== */
+
+.alert_event {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  overflow: hidden;
+  isolation: isolate;
+
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
+  animation: alertIn 1ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+#messages.clean .alert_event {
+  background-color: black !important;
+}
+
+/* top glow */
+#messages.clean .alert_event::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.95),
+    transparent
+  );
+}
+
+/* side glow */
+#messages.clean .alert_event::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.12),
+    transparent 70%
+  );
+  z-index: -1;
+}
+
+/* icons */
+.alert_event svg,
+.alert_event img {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+#messages.clean .alert_event img,
+#messages.clean .alert_event svg {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35))
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.12));
+}
+
+/* content */
+.alert_titleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.alert_title,
+.alert_user {
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.alert_user {
+  font-weight: 700 !important;
+}
+
+.alert_text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.92);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.vertical .alert_textContainer {
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+  align-items: start;
+}
+
+/* #messages.clean .alert_event:has(.twitch) {
+  border-color: rgba(145, 70, 255, 0.45);
+  box-shadow:
+    0 10px 28px rgba(145, 70, 255, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+#messages.clean .alert_event:has(.kick) {
+  border-color: rgba(83, 252, 25, 0.35);
+  box-shadow:
+    0 10px 28px rgba(83, 252, 25, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+} */
+
+/* ===============================
+   ANIMATION
+   =============================== */
+
+@keyframes alertIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes alertOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+    filter: blur(6px);
+  }
+}
+
+.alert_event.fade-out {
+  animation: alertOut 0.35s ease forwards;
+}
+
+/* ===============================
+   HORIZONTAL MODE
+   =============================== */
+#messages.horizontal .alert_event {
+  flex: 0 0 auto !important;
+  display: inline-flex;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px !important;
+  margin: 0 !important;
+
+  width: auto !important;
+  min-width: auto !important;
+  max-width: none !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  white-space: nowrap;
+  overflow: visible;
+  isolation: auto;
+
+  animation: messageInHorizontal 0.1s ease forwards;
+}
+
+#messages.horizontal .alert_event::before,
+#messages.horizontal .alert_event::after {
+  display: none;
+}
+
+#messages.horizontal .alert_event svg,
+#messages.horizontal .alert_event img {
+  width: 15px;
+  height: 15px;
+  filter: none;
+}
+
+#messages.horizontal .alert_titleContainer {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  min-width: auto;
+  flex: 0 0 auto;
+}
+
+#messages.horizontal .alert_title,
+#messages.horizontal .alert_text {
+  font-size: 1rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+#messages.horizontal .alert_title {
+  font-weight: 700;
+}
+
+#messages.horizontal .alert_text {
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+/* ===============================
+   HORIZONTAL PLATFORM GLOW
+   =============================== */
+
+/* TWITCH */
+#messages.horizontal.clean .alert_event:has(.twitch) .alert_title {
+  text-shadow:
+    0 0 12px rgba(145, 70, 255, 0.75),
+    0 0 1px rgba(145, 70, 255, 0.45);
+}
+
+#messages.horizontal.clean .alert_event:has(.twitch) img {
+  filter: drop-shadow(0 0 12px rgba(145, 70, 255, 0.75))
+    drop-shadow(0 0 1px rgba(145, 70, 255, 0.45));
+}
+
+/* KICK */
+#messages.horizontal.clean .alert_event:has(.kick) .alert_title {
+  text-shadow:
+    0 0 12px rgba(83, 252, 25, 0.75),
+    0 0 1px rgba(83, 252, 25, 0.35);
+}
+
+#messages.horizontal.clean .alert_event:has(.kick) img {
+  filter: drop-shadow(0 0 12px rgba(83, 252, 25, 0.75))
+    drop-shadow(0 0 1px rgba(83, 252, 25, 0.45));
+}
+
+/* ===============================
+   VERTICAL MODE
+   =============================== */
+
+.vertical .alert_event {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 0 !important;
+}
+
+.vertical .alert_title,
+.vertical .alert_titleContainer {
+  flex: 0 !important;
+}
