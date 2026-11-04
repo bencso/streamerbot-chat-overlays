@@ -51,15 +51,15 @@ A **Chat Widget** egy streameléshez használt overlay widget, amely közvetlen�
 ### Browser Source URL
 
 ```url
-https://bencso.github.io/streamerbot-overlays/chat.html?theme=minimal
+.../chat.html?theme=minimal
 ```
 
 ### Ajánlott beállítások
 
 - Width: `1920`
 - Height: `1080`
-- ✅ Refresh browser when scene becomes active
-- ✅ Shutdown source when not visible (opcionális)
+- ✅ "Refresh browser when scene becomes active"
+- ✅ "Shutdown source when not visible" (opcionális)
 
 ---
 
@@ -181,18 +181,7 @@ chat.html?colored
 | Overlay    | Browser Source     |
 | Platformok | Twitch, Kick       |
 
----
-
-## 🗺️ Roadmap
-
-- [ ] YouTube Live támogatás
-- [ ] Webes konfigurátor felület
-- [ ] Sound alerts
-- [ ] Több animáció
-- [ ] Theme editor
-- [ ] Custom font loader
-
----
+ ---
 
 ## 🤝 Közreműködés
 
